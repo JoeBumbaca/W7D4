@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom';
 import { receiveAllPokemon, requestAllPokemon } from './actions/pokemon_actions';
 import  { fetchAllPokemon } from './util/api.util';
 import configureStore from './store/store'
+import { selectAllPokemon } from '../frontend/reducers/selectors'
+import Root from './components/root'
 
 document.addEventListener("DOMContentLoaded", () =>  {
 
@@ -14,7 +16,8 @@ document.addEventListener("DOMContentLoaded", () =>  {
   window.getState = store.getState;
   window.dispatch = store.dispatch;
   window.requestAllPokemon = requestAllPokemon;
+  window.selectAllPokemon = selectAllPokemon;
 
-  ReactDOM.render(<h1>REACT IS WORKING</h1>, root);
+  ReactDOM.render(<Root store={store} />, root);
 
 }) 
