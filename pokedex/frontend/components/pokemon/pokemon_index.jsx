@@ -8,7 +8,7 @@ class PokemonIndex extends React.Component {
   //props is an array of pokemon objects [ {pika}, {bulb} ,{char} ]
 
   componentDidMount() {
-    this.props.requestAllPokemon
+    this.props.requestAllPokemon();
   }
 
   render() {
@@ -16,7 +16,10 @@ class PokemonIndex extends React.Component {
       <div>
         <ul>
         {this.props.pokemon.map (poke => {
-          return (<li>{poke.name}</li>)
+          return (
+            <li key={poke.id}>{poke.name} <img src={poke.image_url} width="50" height="50"></img></li>
+
+          )
         }
       )}      
         </ul>

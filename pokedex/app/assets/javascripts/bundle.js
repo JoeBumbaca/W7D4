@@ -163,13 +163,19 @@ function (_React$Component) {
   _createClass(PokemonIndex, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      this.props.requestAllPokemon;
+      this.props.requestAllPokemon();
     }
   }, {
     key: "render",
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, this.props.pokemon.map(function (poke) {
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, poke.name);
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+          key: poke.id
+        }, poke.name, " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+          src: poke.image_url,
+          width: "50",
+          height: "50"
+        }));
       }))) // <h1> POKEMON INDEX IS WORKING</h1>
       ;
     }
@@ -208,7 +214,9 @@ var mapStateToProps = function mapStateToProps(state) {
 
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
-    requestAllPokemon: dispatch(Object(_actions_pokemon_actions__WEBPACK_IMPORTED_MODULE_1__["requestAllPokemon"])())
+    requestAllPokemon: function requestAllPokemon() {
+      return dispatch(Object(_actions_pokemon_actions__WEBPACK_IMPORTED_MODULE_1__["requestAllPokemon"])());
+    }
   };
 };
 
@@ -237,7 +245,7 @@ var Root = function Root(_ref) {
   var store = _ref.store;
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_redux__WEBPACK_IMPORTED_MODULE_1__["Provider"], {
     store: store
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, " Hello ,WORLD "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_pokemon_pokemon_index_container__WEBPACK_IMPORTED_MODULE_2__["default"], null));
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, " Hello POKEMONS "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_pokemon_pokemon_index_container__WEBPACK_IMPORTED_MODULE_2__["default"], null));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Root);
